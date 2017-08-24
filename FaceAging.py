@@ -125,27 +125,48 @@ class FaceAging(object):
         self.EG_loss = tf.reduce_mean(tf.abs(self.input_image - self.G))  # L1 loss
 
         # loss function of discriminator on z
-        self.D_z_loss_prior = tf.reduce_mean(
-            tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_z_prior_logits,
-                                                    labels=tf.ones_like(self.D_z_prior_logits))
+        # self.D_z_loss_prior = tf.reduce_mean(
+        #     tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_z_prior_logits,
+        #                                             labels=tf.ones_like(self.D_z_prior_logits))
+        #
+        # )
+        # self.D_z_loss_z = tf.reduce_mean(
+        #     tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_z_logits, labels=tf.zeros_like(self.D_z_logits))
+        # )
+        # self.E_z_loss = tf.reduce_mean(
+        #     tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_z_logits, labels=tf.ones_like(self.D_z_logits))
+        # )
+        # # loss function of discriminator on image
+        # self.D_img_loss_input = tf.reduce_mean(
+        #     tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_input_logits,
+        #                                             labels=tf.ones_like(self.D_input_logits))
+        # )
+        # self.D_img_loss_G = tf.reduce_mean(
+        #     tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_G_logits, labels=tf.zeros_like(self.D_G_logits))
+        # )
+        # self.G_img_loss = tf.reduce_mean(
+        #     tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_G_logits, labels=tf.ones_like(self.D_G_logits))
+        # )
 
+        # loss function of discriminator on z
+        self.D_z_loss_prior = tf.reduce_mean(
+            tf.nn.sigmoid_cross_entropy_with_logits(self.D_z_prior_logits, tf.ones_like(self.D_z_prior_logits))
         )
         self.D_z_loss_z = tf.reduce_mean(
-            tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_z_logits, labels=tf.zeros_like(self.D_z_logits))
+            tf.nn.sigmoid_cross_entropy_with_logits(self.D_z_logits, tf.zeros_like(self.D_z_logits))
         )
         self.E_z_loss = tf.reduce_mean(
-            tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_z_logits, labels=tf.ones_like(self.D_z_logits))
+            tf.nn.sigmoid_cross_entropy_with_logits(self.D_z_logits, tf.ones_like(self.D_z_logits))
         )
         # loss function of discriminator on image
         self.D_img_loss_input = tf.reduce_mean(
-            tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_input_logits,
-                                                    labels=tf.ones_like(self.D_input_logits))
+            tf.nn.sigmoid_cross_entropy_with_logits(self.D_input_logits, tf.ones_like(self.D_input_logits))
         )
         self.D_img_loss_G = tf.reduce_mean(
-            tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_G_logits, labels=tf.zeros_like(self.D_G_logits))
+            tf.nn.sigmoid_cross_entropy_with_logits(self.D_G_logits, tf.zeros_like(self.D_G_logits))
         )
         self.G_img_loss = tf.reduce_mean(
-            tf.nn.sigmoid_cross_entropy_with_logits(logits=self.D_G_logits, labels=tf.ones_like(self.D_G_logits))
+            tf.nn.sigmoid_cross_entropy_with_logits(self.D_G_logits, tf.ones_like(self.D_G_logits))
         )
 
         # total variation to smooth the generated image
