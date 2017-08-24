@@ -191,11 +191,40 @@ class Faces(object):
         #
         return images_map
 
+    def opsFaceImages(self, dir):
+        """
+        预处理图片，也就是我们收集到的图片
+        :param dir:
+        :return:
+        """
+        temDir = os.path.join(dir, 'tmp')
+
+        if not os.path.exists(temDir):
+            os.makedirs(temDir)
+
+        num = 0
+        for f in os.listdir(dir):
+            if f.find('.jp') > 0:
+                image_path = os.path.join(dir, f)
+                faceImage, local = self.getFaceImage(image_path)
+                if faceImage is None:
+                    continue
+                tmp_path = os.path.join(temDir, f)
+                num += 1
+                print('save=', tmp_path, "  num=", num)
+                faceImage.resize((200, 200)).save(tmp_path)
+                # if num > 2:
+                #     break
+
+                    # if len(images_map) > 0:
+                    #
+
 
 if __name__ == '__main__':
     faces = Faces()
     # dir = '/Users/haizhu/Desktop/jiemo/test'
-    dir = '/Users/haizhu/Desktop/jiemo/test_female'
+    # dir = '/Users/haizhu/Desktop/jiemo/test_female'
 
-    images_map = faces.getFaceImageInfo(dir)
-    images = list(v['tmp'] for v in images_map.values())
+    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part2'
+    images_map = faces.opsFaceImages(dir)
+    # images = list(v['tmp'] for v in images_map.values())
