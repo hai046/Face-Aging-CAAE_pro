@@ -304,7 +304,7 @@ class FaceAging(object):
             dtype=np.float32
         ) * self.image_value_range[0]
         for i, label in enumerate(sample_files):
-            label = int(str(sample_files[i]).split('\\')[-1].split('_')[0])
+            label = int(str(sample_files[i]).split(os.path.sep)[-1].split('_')[0])
             if 0 <= label <= 5:
                 label = 0
             elif 6 <= label <= 10:
@@ -328,6 +328,8 @@ class FaceAging(object):
             sample_label_age[i, label] = self.image_value_range[-1]
             gender = int(str(sample_files[i]).split(os.path.sep)[-1].split('_')[1])
             sample_label_gender[i, gender] = self.image_value_range[-1]
+
+            print('label=', label, ' gender=', gender, sample_files[i])
 
         # ******************************************* training *******************************************************
         print('\n\tPreparing for training ...')
