@@ -8,7 +8,7 @@ flags = tf.app.flags
 flags.DEFINE_integer(flag_name='epoch', default_value=50, docstring='number of epochs')
 flags.DEFINE_boolean(flag_name='is_train', default_value=True, docstring='training mode')
 flags.DEFINE_string(flag_name='dataset', default_value='UTKFace', docstring='dataset name')
-flags.DEFINE_string(flag_name='savedir', default_value='/Users/haizhu/Downloads/ml/save',
+flags.DEFINE_string(flag_name='savedir', default_value='.save',
                     docstring='dir for saving training results')
 flags.DEFINE_string(flag_name='testdir', default_value=dir, docstring='dir for testing images')
 FLAGS = flags.FLAGS
