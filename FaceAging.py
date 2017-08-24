@@ -370,7 +370,7 @@ class FaceAging(object):
                     dtype=np.float
                 ) * self.image_value_range[0]
                 for i, label in enumerate(batch_files):
-                    label = int(str(batch_files[i]).split('\\')[-1].split('_')[0])
+                    label = int(str(batch_files[i]).spgitlit('\\')[-1].split('_')[0])
                     if 0 <= label <= 5:
                         label = 0
                     elif 6 <= label <= 10:

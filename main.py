@@ -2,7 +2,7 @@ import tensorflow as tf
 from FaceAging import FaceAging
 from get_face import Faces
 
-dir = '/Users/haizhu/Desktop/jiemo/test_female'
+dir = 'test_image'
 
 flags = tf.app.flags
 flags.DEFINE_integer(flag_name='epoch', default_value=50, docstring='number of epochs')
