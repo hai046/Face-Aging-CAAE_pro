@@ -398,8 +398,15 @@ class FaceAging(object):
                     else:
                         label = 9
                     batch_label_age[i, label] = self.image_value_range[-1]
-                    gender = int(info[1])
-                    batch_label_gender[i, gender] = self.image_value_range[-1]
+                    g = info[1]
+                    if g == '1' or g == '0':
+                        gender = int(g)
+                        batch_label_gender[i, gender] = self.image_value_range[-1]
+                        continue
+                    else:
+                        print(batch_files[i])
+                        print(info)
+                        exit(0)
 
                 # prior distribution on the prior of z
                 batch_z_prior = np.random.uniform(
