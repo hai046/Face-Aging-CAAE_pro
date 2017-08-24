@@ -671,7 +671,7 @@ class FaceAging(object):
             size_frame=[size_frame, size_frame]
         )
 
-    def test(self, images, gender, name, show_col=1):
+    def test(self, images, gender, name, show_col=None):
         test_dir = os.path.join(self.test_savedir, 'tmp')
         if not os.path.exists(test_dir):
             os.makedirs(test_dir)

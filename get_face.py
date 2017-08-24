@@ -225,6 +225,6 @@ if __name__ == '__main__':
     # dir = '/Users/haizhu/Desktop/jiemo/test'
     # dir = '/Users/haizhu/Desktop/jiemo/test_female'
 
-    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part2'
+    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part3'
     images_map = faces.opsFaceImages(dir)
     # images = list(v['tmp'] for v in images_map.values())
