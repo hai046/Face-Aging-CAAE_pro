@@ -20,7 +20,7 @@ TensorFlow implementation of the algorithm in the paper [Age Progression/Regress
 * Scipy
 * TensorFlow (r0.12)
     * Please note that you will get errors if running with TensorFlow r1.0 because the definition of input arguments of some functions have changed, *e.g.*, `tf.concat` and `tf.nn.sigmoid_cross_entropy_with_logits`. 
-
+    [* 注意我已经修改成使用1.13.0]
 ## Datasets
 * FGNET
 * [MORPH](https://ebill.uncw.edu/C20231_ustores/web/product_detail.jsp?PRODUCTID=8)
