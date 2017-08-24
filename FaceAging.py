@@ -394,6 +394,7 @@ class FaceAging(object):
                     else:
                         label = 9
                     batch_label_age[i, label] = self.image_value_range[-1]
+                    print(batch_files[i])
                     gender = int(str(batch_files[i]).split(os.path.sep)[-1].split('_')[1])
                     batch_label_gender[i, gender] = self.image_value_range[-1]
 
