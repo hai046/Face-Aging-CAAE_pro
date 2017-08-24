@@ -112,7 +112,7 @@ def resizeFaceCenter(image):
 
 
 class Faces(object):
-    def getFaceImage(self, name='', padding_rate=0.14):
+    def getFaceImage(self, name='', padding_rate=0.12):
         """
         :param name:
         :return: image,location (top, right, bottom, left)

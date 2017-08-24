@@ -1,5 +1,5 @@
 
-fork by  https://github.com/ageitgey/face_recognition
+fork by  https://github.com/ZZUTK/Face-Aging-CAAE
 
 不过做了优化：
 比对图片之前对face图片做了处理，例如把人脸摆正取正方形 这样生成效果会更好
