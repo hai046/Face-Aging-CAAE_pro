@@ -283,7 +283,11 @@ class FaceAging(object):
         self.writer = tf.summary.FileWriter(os.path.join(self.save_dir, 'summary'), self.session.graph)
 
         # ************* get some random samples as testing data to visualize the learning process *********************
-        sample_files = file_names[0:self.size_batch]
+
+        sample_files = []
+        for i in np.random.randint(0, len(file_names), 10):
+            sample_files.append(file_names[i])
+        # sample_files = file_names[0:self.size_batch]
         file_names[0:self.size_batch] = []
         sample = [load_image(
             image_path=sample_file,
