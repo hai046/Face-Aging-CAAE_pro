@@ -288,6 +288,7 @@ class FaceAging(object):
         ids = np.random.randint(0, len(file_names) - 1 - self.size_batch, self.size_batch)
         print('ids', ids)
         for i in ids:
+            print('i=', i, len(file_names))
             sample_files.append(file_names[i])
             file_names.remove(file_names[i])
 
