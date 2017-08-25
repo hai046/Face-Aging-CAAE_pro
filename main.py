@@ -27,7 +27,8 @@ def main(_):
             is_training=FLAGS.is_train,  # flag for training or testing mode
             save_dir=FLAGS.savedir,  # path to save checkpoints, samples, and summary
             dataset_name=FLAGS.dataset,  # name of the dataset in the folder ./data
-            test_savedir=dir
+            test_savedir=dir,
+            num_encoder_channels=256,
         )
         if FLAGS.is_train:
             print('\n\tTraining Mode')

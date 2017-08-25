@@ -112,7 +112,7 @@ def resizeFaceCenter(image):
 
 
 class Faces(object):
-    def getFaceImage(self, name='', padding_rate=0.12):
+    def getFaceImage(self, name='', padding_rate=0.2):
         """
         :param name:
         :return: image,location (top, right, bottom, left)
@@ -126,7 +126,7 @@ class Faces(object):
         image = scipy.misc.fromimage(im, flatten=False, mode='RGB')
         face_locations = face_recognition.face_locations(image)  # (top, right, bottom, left)
 
-        if len(face_locations) > 0:
+        if len(face_locations) == 1:
             loc = face_locations[0]
             padding = padding_rate * (loc[2] - loc[0])
             print('padding=', padding)
@@ -152,7 +152,7 @@ class Faces(object):
                           height if lower + padding_y > height else lower + padding_y))
 
 
-        elif len(face_locations) == 0:
+        else:
             return None, None
 
         return im, face_locations[0]
@@ -191,17 +191,15 @@ class Faces(object):
         #
         return images_map
 
-    def opsFaceImages(self, dir):
+    def opsFaceImages(self, dir, temDir, size=256):
         """
         预处理图片，也就是我们收集到的图片
         :param dir:
         :return:
         """
-        temDir = os.path.join(dir, 'tmp')
 
         if not os.path.exists(temDir):
             os.makedirs(temDir)
-
         num = 0
         for f in os.listdir(dir):
             if f.find('.jp') > 0:
@@ -212,12 +210,12 @@ class Faces(object):
                 tmp_path = os.path.join(temDir, f)
                 num += 1
                 print('save=', tmp_path, "  num=", num)
-                faceImage.resize((200, 200)).save(tmp_path)
+                faceImage.resize((size, size)).save(tmp_path)
                 # if num > 2:
                 #     break
 
-                    # if len(images_map) > 0:
-                    #
+                # if len(images_map) > 0:
+                #
 
 
 if __name__ == '__main__':
@@ -225,6 +223,6 @@ if __name__ == '__main__':
     # dir = '/Users/haizhu/Desktop/jiemo/test'
     # dir = '/Users/haizhu/Desktop/jiemo/test_female'
 
-    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part3'
-    images_map = faces.opsFaceImages(dir)
+    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part2'
+    images_map = faces.opsFaceImages(dir, '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/all', 256)
     # images = list(v['tmp'] for v in images_map.values())
