@@ -287,9 +287,11 @@ class FaceAging(object):
         sample_files = []
         for i in np.random.randint(0, len(file_names), self.size_batch):
             sample_files.append(file_names[i])
+            file_names.remove(file_names[i])
+
         print("test sample_files=", sample_files)
         # sample_files = file_names[0:self.size_batch]
-        file_names[0:self.size_batch] = []
+        # file_names[0:self.size_batch] = []
         sample = [load_image(
             image_path=sample_file,
             image_size=self.size_image,
@@ -378,9 +380,6 @@ class FaceAging(object):
                 ) * self.image_value_range[0]
                 for i, label in enumerate(batch_files):
                     info = str(batch_files[i]).split(os.path.sep)[-1].split('_')
-                    if len(info) < 2:
-                        print(batch_files[i])
-                        continue
                     label = int(info[0])
                     if 0 <= label <= 5:
                         label = 0
