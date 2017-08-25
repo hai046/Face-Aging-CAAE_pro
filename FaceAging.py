@@ -287,6 +287,7 @@ class FaceAging(object):
         sample_files = []
         for i in np.random.randint(0, len(file_names), 10):
             sample_files.append(file_names[i])
+        print("test sample_files=", sample_files)
         # sample_files = file_names[0:self.size_batch]
         file_names[0:self.size_batch] = []
         sample = [load_image(
