@@ -112,7 +112,7 @@ def resizeFaceCenter(image):
 
 
 class Faces(object):
-    def getFaceImage(self, name='', padding_rate=0.0):
+    def getFaceImage(self, name='', padding_rate=0.1):
         """
         :param name:
         :return: image,location (top, right, bottom, left)
@@ -204,7 +204,7 @@ class Faces(object):
         for f in os.listdir(dir):
             if f.find('.jp') > 0:
                 image_path = os.path.join(dir, f)
-                faceImage, local = self.getFaceImage(image_path)
+                faceImage, local = self.getFaceImage(image_path, padding_rate=0)
                 if faceImage is None:
                     continue
                 tmp_path = os.path.join(temDir, f)
@@ -223,6 +223,6 @@ if __name__ == '__main__':
     # dir = '/Users/haizhu/Desktop/jiemo/test'
     # dir = '/Users/haizhu/Desktop/jiemo/test_female'
 
-    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part2'
+    dir = '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/part1'
     images_map = faces.opsFaceImages(dir, '/Users/haizhu/Downloads/ml/drive-download-20170824T030713Z-001/all', 256)
     # images = list(v['tmp'] for v in images_map.values())
