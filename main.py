@@ -28,7 +28,7 @@ def main(_):
             save_dir=FLAGS.savedir,  # path to save checkpoints, samples, and summary
             dataset_name=FLAGS.dataset,  # name of the dataset in the folder ./data
             test_savedir=dir,
-            num_encoder_channels=128,
+            num_encoder_channels=64,
         )
         if FLAGS.is_train:
             print('\n\tTraining Mode')
