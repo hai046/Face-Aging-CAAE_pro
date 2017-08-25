@@ -285,7 +285,7 @@ class FaceAging(object):
         # ************* get some random samples as testing data to visualize the learning process *********************
 
         sample_files = []
-        for i in np.random.randint(0, len(file_names), 10):
+        for i in np.random.randint(0, len(file_names), self.size_batch):
             sample_files.append(file_names[i])
         print("test sample_files=", sample_files)
         # sample_files = file_names[0:self.size_batch]
